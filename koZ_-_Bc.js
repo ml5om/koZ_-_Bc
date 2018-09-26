@@ -79,6 +79,22 @@ m.sendFile(message.attachments.first().url).catch();
 
 
 
+ client.on('message', message => {
+  if (!message.guild) return;
+
+  if (message.content === 'leave room') {
+    if (message.member.voiceChannel) {
+      message.member.voiceChannel.leave()
+        .then(connection => { 
+        })
+        .catch(console.log);
+    } else {
+      message.reply('يجب ان تكون في روم صوتي');
+    }
+  }
+});
+  
+
 
 
 client.on('message', function(message) {
