@@ -1,15 +1,14 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
+const ytdl = require("ytdl-core");
+const { Client, Util } = require('discord.js');
+const queue = new Map();
 const client = new Discord.Client();
-const prefix = '-'
+const prefix = "-"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log('')
-  console.log('')
-  console.log('╔[═════════════════════════════════════════════════════════════════]╗')
   console.log(`[Start] ${new Date()}`);
-  console.log('╚[═════════════════════════════════════════════════════════════════]╝')
-  console.log('')
   console.log('╔[════════════════════════════════════]╗');
   console.log(`Logged in as * [ " ${client.user.username} " ]`);
   console.log('')
@@ -23,7 +22,6 @@ client.on('ready', () => {
   console.log('╔[════════════]╗')
   console.log(' Bot Is Online')
   console.log('╚[════════════]╝')
-  console.log('')
   console.log('')
 });
 
@@ -139,6 +137,35 @@ client.on('message', function(message) {
           message.delete(5000);
         });
     }
+});
+
+
+
+client.on('message', async message => {
+            if(!message.channel.guild) return;
+             if (message.content.startsWith("-")) {
+let args = message.content.split(' ').slice(1).join(' ');
+            let sigMessage = await args;
+            
+            if (sigMessage === "online") {
+                client.user.setStatus("online");
+                message.author.send("Your status was set to online.");
+            }
+            if (sigMessage === "idle") {
+                client.user.setStatus("idle");
+                message.author.send("Your status was set to idle.");
+            }
+            if (sigMessage === "invisible") {
+                client.user.setStatus("invisible");
+                message.author.send("Your status was set to invisible.");
+            }
+            if (sigMessage === "dnd") {
+                client.user.setStatus("dnd");
+                message.author.send("Your status was set to dnd.");
+            }
+            // message.author.send("." + message.content);
+        
+}
 });
 
 
