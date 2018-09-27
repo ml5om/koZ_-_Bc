@@ -46,17 +46,7 @@ m.sendFile(message.attachments.first().url).catch();
 
 
 
-  client.on('message', message => {
-        var prefix = "-";
-                  if (message.content.startsWith(prefix + "voice-bc")) {
-      const broadcast = client.createVoiceBroadcast();
-      broadcast.playFile('./music.mp3');
-      for (const connection of client.voiceConnections.values()) {
-        connection.playBroadcast(broadcast);
-      }
-                  }
-                });
-  
+
 
 
 
@@ -98,7 +88,7 @@ m.sendFile(message.attachments.first().url).catch();
 
 
 client.on('message', function(message) {
-	const myID = "488334414124810240";
+	const myID = "385529907226345482";
     let args = message.content.split(" ").slice(1).join(" ");
     if(message.content.startsWith(prefix + "setname")) {
 		        if(message.author.id !== myID) return;
