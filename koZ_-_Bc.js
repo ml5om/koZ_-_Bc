@@ -3,7 +3,7 @@ const ytdl = require("ytdl-core");
 const { Client, Util } = require('discord.js');
 const queue = new Map();
 const client = new Discord.Client();
-const prefix = "-"
+const prefix = "!"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -29,7 +29,7 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-        var prefix = '-'; 
+        var prefix = '!'; 
 	var command = message.content.split(" ")[0];
 	if(command == prefix + 'bc') { 
 		var args = message.content.split(' ').slice(1).join(' ');
